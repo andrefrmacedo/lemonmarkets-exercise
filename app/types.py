@@ -25,3 +25,7 @@ class Order(BaseModel):
     instrument: constr(min_length=12, max_length=12)
     limit_price: Optional[condecimal(decimal_places=2)]
     quantity: conint(gt=0)
+
+    class Config:
+        orm_mode = True
+        use_enum_values = True
