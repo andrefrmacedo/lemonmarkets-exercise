@@ -1,6 +1,6 @@
 import datetime
 
-from app import models, types
+from app import models
 from app.api import CreateOrderRequestModel
 from app.db.setup import db_session
 from app.stock_exchange import place_order
@@ -15,7 +15,7 @@ def process_create_order_request(order_request: CreateOrderRequestModel) -> Orde
         db.add(db_order)
         db.flush()
 
-        order = types.Order(**db_order.__dict__)
+        order = Order(**db_order.__dict__)
         place_order(order)
 
     return order
